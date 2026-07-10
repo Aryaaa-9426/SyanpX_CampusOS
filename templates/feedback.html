@@ -1,27 +1,75 @@
 <!DOCTYPE html>
 <html>
+
 <head>
+
     <title>Feedback - CampusOS</title>
-    <link rel="stylesheet" href="/static/style.css">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
 </head>
 
 <body>
 
 <div class="container">
 
-    <h1>Student Feedback</h1>
+    <!-- Navbar -->
 
-    <form method="POST" action="/submit_feedback">
+    <nav class="navbar">
 
-        <input type="text" name="name" placeholder="Your Name" required>
+        <h2>🎓 CampusOS</h2>
 
-        <textarea name="message" placeholder="Write your feedback here..." required></textarea>
+        <div>
 
-        <button type="submit">Submit Feedback</button>
+            <a href="/dashboard">Dashboard</a>
+            <a href="/feedback">Feedback</a>
+            <a href="/logout">Logout</a>
 
-    </form>
+        </div>
+
+    </nav>
+
+    <!-- Header -->
+
+    <div class="dashboard-header">
+
+        <h1>💬 Student Feedback</h1>
+
+        <p>
+            We value your suggestions. Help us improve CampusOS by sharing your feedback.
+        </p>
+
+    </div>
+
+    <!-- Feedback Form -->
+
+    <div class="profile-card">
+
+        <form method="POST" action="/submit_feedback">
+
+            <input
+                type="text"
+                name="name"
+                placeholder="👤 Enter your name"
+                required
+            >
+
+            <textarea
+                name="message"
+                placeholder="✍️ Share your feedback..."
+                required
+            ></textarea>
+
+            <button type="submit">
+                🚀 Submit Feedback
+            </button>
+
+        </form>
+
+    </div>
 
 </div>
 
 </body>
+
 </html>

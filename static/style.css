@@ -517,5 +517,37 @@ color:#1e3a8a;
 .card p{
 
     line-height:1.6;
+ 
+}
+/* ===========================
+   Feedback Page
+=========================== */
+
+.profile-card form{
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+
+}
+
+.profile-card input,
+.profile-card textarea{
+
+    width:90%;
+    margin-bottom:15px;
+
+}
+
+.profile-card textarea{
+
+    min-height:150px;
+    resize:vertical;
+
+}
+
+.profile-card button{
+
+    width:220px;
 
 }
