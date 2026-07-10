@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CampusOS AI Assistant</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>🤖 CampusOS AI Assistant</h1>
+
+    <p>Ask anything about CampusOS</p>
+
+    <form method="POST">
+
+        <input type="text" 
+               name="question" 
+               placeholder="Ask your question..."
+               required>
+
+        <button type="submit">Ask AI</button>
+
+    </form>
+
+
+    {% if answer %}
+
+    <div class="card">
+
+        <h3>AI Response</h3>
+
+        <p>{{ answer }}</p>
+
+    </div>
+
+    {% endif %}
+
+
+</div>
+
+</body>
+</html>

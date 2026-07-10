@@ -462,7 +462,41 @@ def search():
         materials=materials,
         placements=placements
     )
+# -----------------------------
+# AI Campus Assistant
+# -----------------------------
 
+@app.route("/ai_assistant", methods=["GET", "POST"])
+def ai_assistant():
+
+    answer = None
+
+    if request.method == "POST":
+
+        question = request.form["question"].lower()
+
+        if "event" in question:
+            answer = "You can check upcoming events in the Events section."
+
+        elif "notice" in question:
+            answer = "Latest campus notices are available in the Notices section."
+
+        elif "study" in question or "material" in question:
+            answer = "Study materials are available in the Study Materials section."
+
+        elif "placement" in question or "job" in question:
+            answer = "Placement opportunities are available in the Placement section."
+
+        elif "calendar" in question or "exam" in question:
+            answer = "Academic dates and exam schedules are available in the Academic Calendar."
+
+        else:
+            answer = "I can help you with Events, Notices, Study Materials, Placements and Academic Calendar."
+
+    return render_template(
+        "ai_assistant.html",
+        answer=answer
+    )
 
 # -----------------------------
 # Run App
