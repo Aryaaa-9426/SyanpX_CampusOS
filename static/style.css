@@ -552,9 +552,30 @@ color:#1e3a8a;
 
 }
 .footer{
-    margin-top:50px;
-    padding:20px;
-    background:#1e3a8a;
-    color:white;
+
+    margin-top:60px;
+    padding:25px;
+
+    background:linear-gradient(90deg,#2563eb,#1e40af);
+
+    color:#ffffff;
+
     text-align:center;
+
+    font-size:16px;
+
+    font-weight:600;
+
+    letter-spacing:0.5px;
+
+    border-radius:20px 20px 0 0;
+
+    box-shadow:0 -5px 15px rgba(0,0,0,0.1);
+
+}
+
+.footer p{
+
+    margin:0;
+
 }
