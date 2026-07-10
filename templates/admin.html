@@ -1,125 +1,294 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <title>Admin Panel - CampusOS</title>
-    <link rel="stylesheet" href="/static/style.css">
+
+<title>Admin Panel - CampusOS</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
 </head>
+
 
 <body>
 
+
 <div class="container">
-    <nav class="navbar">
 
-    <h2>CampusOS Admin 🛠️</h2>
 
-    <div>
-        <a href="/admin">Dashboard</a>
-        <a href="/dashboard">Student View</a>
-        <a href="/logout">Logout</a>
-    </div>
+<nav class="navbar">
+
+<h2>🛠️ CampusOS Admin</h2>
+
+<div>
+
+<a href="/admin">Dashboard</a>
+<a href="/dashboard">Student View</a>
+<a href="/logout">Logout</a>
+
+</div>
 
 </nav>
 
-<h1>Admin Panel</h1>
 
-<h3>Add Event</h3>
+
+
+<div class="dashboard-header">
+
+<h1>Admin Dashboard 🚀</h1>
+
+<p>
+Manage campus events, notices, resources,
+placements and student information.
+</p>
+
+</div>
+
+
+
+
+
+<div class="admin-grid">
+
+
+
+<div class="admin-section">
+
+<h3>📅 Add Event</h3>
 
 <form method="POST" action="/admin">
 
-    <input type="hidden" name="type" value="event">
+<input type="hidden" name="type" value="event">
 
-    <input type="text" name="title" placeholder="Event Title" required>
+<input type="text" name="title" placeholder="Event Title" required>
 
-    <input type="text" name="date" placeholder="Event Date" required>
+<input type="text" name="date" placeholder="Event Date" required>
 
-    <input type="text" name="description" placeholder="Description" required>
+<input type="text" name="description" placeholder="Description" required>
 
-    <button type="submit">Add Event</button>
+<button type="submit">
+Add Event
+</button>
 
 </form>
 
+</div>
 
-<hr>
 
 
-<h3>Add Notice</h3>
+
+
+<div class="admin-section">
+
+<h3>📢 Add Notice</h3>
 
 <form method="POST" action="/admin">
 
-    <input type="hidden" name="type" value="notice">
+<input type="hidden" name="type" value="notice">
 
-    <input type="text" name="title" placeholder="Notice Title" required>
+<input type="text" name="title" placeholder="Notice Title" required>
 
-    <textarea name="message" placeholder="Notice Message" required></textarea>
+<textarea name="message" placeholder="Notice Message" required></textarea>
 
-    <button type="submit">Add Notice</button>
+<button type="submit">
+Add Notice
+</button>
 
 </form>
-<hr>
 
-<h3>Add Study Material</h3>
+</div>
+
+
+
+
+
+
+<div class="admin-section">
+
+<h3>📚 Add Study Material</h3>
+
 
 <form method="POST" action="/add_material">
 
-    <input type="text" name="subject" placeholder="Subject" required>
 
-    <input type="text" name="title" placeholder="Material Title" required>
+<input type="text" name="subject" placeholder="Subject" required>
 
-    <input type="text" name="link" placeholder="Google Drive / PDF Link" required>
+<input type="text" name="title" placeholder="Material Title" required>
 
-    <button type="submit">Add Material</button>
+<input type="text" name="link" placeholder="Google Drive / PDF Link" required>
+
+
+<button type="submit">
+Add Material
+</button>
+
 
 </form>
-<hr>
 
-<h3>Add Academic Calendar</h3>
+</div>
+
+
+
+
+
+
+<div class="admin-section">
+
+<h3>🗓️ Add Academic Calendar</h3>
+
 
 <form method="POST" action="/add_calendar">
 
-    <input type="text" name="title" placeholder="Title" required>
 
-    <input type="text" name="date" placeholder="Date" required>
+<input type="text" name="title" placeholder="Title" required>
 
-    <input type="text" name="description" placeholder="Description" required>
+<input type="text" name="date" placeholder="Date" required>
 
-    <button type="submit">Add Calendar</button>
+<input type="text" name="description" placeholder="Description" required>
 
-</form>
 
-<hr>
+<button type="submit">
+Add Calendar
+</button>
 
-<h2>Add Placement</h2>
-
-<form method="POST" action="/add_placement">
-
-    <input type="text" name="company" placeholder="Company Name" required>
-
-    <input type="text" name="role" placeholder="Job Role" required>
-
-    <input type="text" name="eligibility" placeholder="Eligibility" required>
-
-    <input type="text" name="last_date" placeholder="Last Date" required>
-
-    <input type="text" name="apply_link" placeholder="Apply Link" required>
-
-    <button type="submit">Add Placement</button>
 
 </form>
-
-<a href="/events"><button>View Events</button></a>
-
-<a href="/notices"><button>View Notices</button></a>
-
-<a href="/study_materials"><button>Study Materials</button></a>
-
-<a href="/placements"><button>View Placements</button></a>
-
-<a href="/admin_feedback"><button>View Feedback</button></a>
-
-<a href="/calendar"><button>View Academic Calendar</button></a>
 
 
 </div>
 
+
+
+
+
+
+<div class="admin-section">
+
+
+<h3>💼 Add Placement</h3>
+
+
+<form method="POST" action="/add_placement">
+
+
+<input type="text" name="company" placeholder="Company Name" required>
+
+<input type="text" name="role" placeholder="Job Role" required>
+
+<input type="text" name="eligibility" placeholder="Eligibility" required>
+
+<input type="text" name="last_date" placeholder="Last Date" required>
+
+<input type="text" name="apply_link" placeholder="Apply Link" required>
+
+
+<button type="submit">
+Add Placement
+</button>
+
+
+</form>
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+<h2 class="section-title">
+Manage Campus Data
+</h2>
+
+
+
+<div class="card-container">
+
+
+<div class="card">
+
+<h3>📅 Events</h3>
+
+<a href="/events">
+<button>View</button>
+</a>
+
+</div>
+
+
+
+<div class="card">
+
+<h3>📢 Notices</h3>
+
+<a href="/notices">
+<button>View</button>
+</a>
+
+</div>
+
+
+
+<div class="card">
+
+<h3>📚 Materials</h3>
+
+<a href="/study_materials">
+<button>View</button>
+</a>
+
+</div>
+
+
+
+<div class="card">
+
+<h3>💼 Placements</h3>
+
+<a href="/placements">
+<button>View</button>
+</a>
+
+</div>
+
+
+
+<div class="card">
+
+<h3>💬 Feedback</h3>
+
+<a href="/admin_feedback">
+<button>View</button>
+</a>
+
+</div>
+
+
+
+<div class="card">
+
+<h3>🗓 Calendar</h3>
+
+<a href="/calendar">
+<button>View</button>
+</a>
+
+</div>
+
+
+
+</div>
+
+
+
+</div>
+
+
 </body>
+
 </html>
