@@ -1,5 +1,5 @@
 # SyanpX_CampusOS 
-# 🌌 UniVerse OS
+# 🌌 campus OS
 ### *One Platform. Infinite Possibilities.*
 
 > **An AI-Powered Autonomous University Operating System**
@@ -117,13 +117,7 @@ Using Artificial Intelligence, the platform predicts scheduling conflicts, recom
 
 - Git
 - GitHub
-
-
-
-
-
-
-# 👨‍💻 Team Members
+  # 👨‍💻 Team Members
 
 ## Arnav Tripathi
 **Role:** Team Leader • Backend Development • Database Management • Deployment • Project Coordination
@@ -136,7 +130,7 @@ Using Artificial Intelligence, the platform predicts scheduling conflicts, recom
 
 ---
 
-# 🏆 Why UniVerse OS?
+# 🏆 Why Campus OS?
 
 ✔ AI-Powered Decision Making
 
