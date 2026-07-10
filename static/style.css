@@ -400,3 +400,16 @@ color:#1e3a8a;
     width:400px;
 
 }
+/* Event Cards */
+
+.card strong{
+    color:#1e3a8a;
+}
+
+.card h3{
+    margin-bottom:15px;
+}
+
+.card p{
+    margin:8px 0;
+}
