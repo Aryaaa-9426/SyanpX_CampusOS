@@ -413,3 +413,12 @@ color:#1e3a8a;
 .card p{
     margin:8px 0;
 }
+/* Notices Page */
+
+.card p {
+    line-height: 1.6;
+}
+
+.card h3 {
+    color: #1e3a8a;
+}

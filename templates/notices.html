@@ -1,27 +1,77 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <title>Campus Notices</title>
-    <link rel="stylesheet" href="/static/style.css">
+    <title>Campus Notices - CampusOS</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 
 <body>
 
 <div class="container">
 
-<h1>Campus Notices</h1>
+    <!-- Navbar -->
+    <nav class="navbar">
 
-{% for notice in notices %}
+        <h2>🎓 CampusOS</h2>
 
-<div class="card">
+        <div>
+            <a href="/dashboard">Dashboard</a>
+            <a href="/notices">Notices</a>
+            <a href="/logout">Logout</a>
+        </div>
 
-    <h3>{{ notice.title }}</h3>
+    </nav>
 
-    <p>{{ notice.message }}</p>
+    <!-- Header -->
 
-</div>
+    <div class="dashboard-header">
 
-{% endfor %}
+        <h1>📢 Campus Notices</h1>
+
+        <p>
+            Stay informed with the latest announcements and important updates.
+        </p>
+
+    </div>
+
+    <!-- Notice Cards -->
+
+    <div class="card-container">
+
+        {% if notices %}
+
+            {% for notice in notices %}
+
+            <div class="card">
+
+                <h3>📢 {{ notice.title }}</h3>
+
+                <p>{{ notice.message }}</p>
+
+                <button disabled>Latest Notice</button>
+
+            </div>
+
+            {% endfor %}
+
+        {% else %}
+
+            <div class="card">
+
+                <h2>📭</h2>
+
+                <h3>No Notices Available</h3>
+
+                <p>
+                    There are currently no announcements. Check back later.
+                </p>
+
+            </div>
+
+        {% endif %}
+
+    </div>
 
 </div>
 
