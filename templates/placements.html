@@ -1,37 +1,100 @@
 <!DOCTYPE html>
 <html>
+
 <head>
+
     <title>Placements - CampusOS</title>
-    <link rel="stylesheet" href="/static/style.css">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
 </head>
 
 <body>
 
 <div class="container">
 
-    <h1>Placement Opportunities</h1>
+    <!-- Navbar -->
 
-    {% for placement in placements %}
+    <nav class="navbar">
 
-    <div class="card">
+        <h2>🎓 CampusOS</h2>
 
-        <h3>{{ placement.company }}</h3>
+        <div>
 
-        <p><b>Role:</b> {{ placement.role }}</p>
+            <a href="/dashboard">Dashboard</a>
+            <a href="/placements">Placements</a>
+            <a href="/logout">Logout</a>
 
-        <p><b>Eligibility:</b> {{ placement.eligibility }}</p>
+        </div>
 
-        <p><b>Last Date:</b> {{ placement.last_date }}</p>
+    </nav>
 
-        <a href="{{ placement.apply_link }}" target="_blank">
-            <button>Apply Now</button>
-        </a>
+    <!-- Header -->
+
+    <div class="dashboard-header">
+
+        <h1>💼 Placement Opportunities</h1>
+
+        <p>
+            Explore the latest job and internship opportunities for CampusOS students.
+        </p>
 
     </div>
 
-    {% endfor %}
+    <!-- Placement Cards -->
+
+    <div class="card-container">
+
+        {% if placements %}
+
+            {% for placement in placements %}
+
+            <div class="card">
+
+                <h2>🏢 {{ placement.company }}</h2>
+
+                <hr>
+
+                <p><strong>👨‍💻 Role:</strong> {{ placement.role }}</p>
+
+                <p><strong>🎯 Eligibility:</strong> {{ placement.eligibility }}</p>
+
+                <p><strong>📅 Last Date:</strong> {{ placement.last_date }}</p>
+
+                <p><strong>📌 Status:</strong> <span class="status-open">Applications Open</span></p>
+
+                <br>
+
+                <a href="{{ placement.apply_link }}" target="_blank">
+
+                    <button>🚀 Apply Now</button>
+
+                </a>
+
+            </div>
+
+            {% endfor %}
+
+        {% else %}
+
+            <div class="card">
+
+                <h1>💼</h1>
+
+                <h2>No Placement Opportunities</h2>
+
+                <p>
+                    New placement opportunities will be published here soon.
+                </p>
+
+            </div>
+
+        {% endif %}
+
+    </div>
 
 </div>
 
 </body>
+
 </html>

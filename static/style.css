@@ -478,3 +478,27 @@ color:#1e3a8a;
 .card a button{
     width:100%;
 }
+/* ===========================
+   Placements Page
+=========================== */
+
+.status-open{
+
+    color:#16a34a;
+    font-weight:bold;
+
+}
+
+.card hr{
+
+    border:none;
+    border-top:1px solid #e5e7eb;
+    margin:15px 0;
+
+}
+
+.card button{
+
+    width:100%;
+
+}
