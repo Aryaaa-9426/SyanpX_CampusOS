@@ -1,169 +1,73 @@
-# SyanpX_CampusOS 
-# 🌌 campus OS
-### *One Platform. Infinite Possibilities.*
+# 🎓 CampusOS
 
-> **An AI-Powered Autonomous University Operating System**
+## Team Name
+SynapX
 
----
+## Team Leader
+Arnav Tripathi
 
-# 👥 Team Details
+## Team Leader Email
+arnavtripathi2229@gmail.com
 
-**Team Name:** Hackovate
+## Team Leader Phone Number
++91 82992 66384
 
-**Team Leader:** Arnav Tripathi
+## Team Size
+3 Members
 
-**Team Leader Email:** arnavtripathi2229@gmail.com
+## Problem Statement (PS) Title
+Smart Campus Management System
 
-**Team Leader Phone:** +91 82992 66384
+## Project Title
+CampusOS
 
-**Team Size:** 3
+## Project Description
+CampusOS is a Smart Campus Management System that simplifies campus operations through a single platform. It enables students to access events, notices, study materials, placement opportunities, academic calendars, and AI-powered assistance, while providing administrators with a centralized dashboard to manage campus information efficiently.
 
----
+## Team Members
 
-# 🏆 Hackathon Details
+- Arnav Tripathi (Team Leader)
+- Arya Singh
+- Anurag
 
-**Track:** Track 1 – Full Stack Engineering
+## Member Roles & Responsibilities
 
-**Problem Statement:** PS 1 – Autonomous University Operating System
+### Arnav Tripathi
+- Team Coordination
+- Project Registration & Submission
 
-**Project Title:** UniVerse OS
+### Arya Singh
+- Full Stack Development
+- UI/UX Design
+- Backend Development
+- Deployment & GitHub Management
 
----
+### Anurag
+- Presentation (PPT)
+- Demo Video
+- Pitch Preparation
 
-# 📖 Project Description
-
-UniVerse OS is an AI-powered Smart University Operating System that transforms traditional campus management into a fully digital, intelligent ecosystem.
-
-The platform seamlessly connects students, faculty, administrators, clubs, venues, and university resources through one unified dashboard. It automates university operations using Artificial Intelligence, predictive analytics, smart scheduling, and real-time insights, enabling faster decision-making and improving the overall campus experience.
-
----
-
-# 🎯 Problem Statement
-
-Universities often rely on disconnected systems and manual processes for managing events, venues, faculty, students, and campus resources. This leads to scheduling conflicts, inefficient resource utilization, lack of real-time insights, and poor collaboration.
-
-UniVerse OS addresses these challenges by creating a centralized AI-powered operating system for the entire university.
-
----
-
-# 💡 Our Solution
-
-UniVerse OS provides a centralized digital platform that integrates every aspect of university operations.
-
-Using Artificial Intelligence, the platform predicts scheduling conflicts, recommends optimal resource allocation, automates workflows, and provides administrators with real-time analytics for better decision-making.
-
----
-
-# ✨ Features
-
-- 🎓 Student Portal
-- 👨‍🏫 Faculty Portal
-- 🏛 Admin Dashboard
-- 📅 Smart Event Management
-- 🏫 AI Venue Allocation
-- ⚠️ Event Conflict Detection
-- 🤖 AI Recommendation Engine
-- 📊 Live Analytics Dashboard
-- 📈 Predictive Analytics
-- 🎭 Club & Society Management
-- 📚 Resource Management
-- 🔔 Smart Notifications
-- 🔐 Secure Authentication
-- 📄 Digital Document Management
-
----
-
-# 🤖 AI Features
-
-- AI Event Recommendations
-- Smart Venue Suggestions
-- Faculty Workload Optimization
-- Student Activity Prediction
-- Resource Utilization Prediction
-- Event Attendance Forecasting
-- Personalized Dashboard
-- Intelligent Notifications
-
----
-
-# 🛠 Technology Stack
-
-## Frontend
-
-- React.js
-- HTML5
-- CSS3
-- JavaScript
-
-## Backend
-
-- Flask (Python)
-## database
-
-- MongoDB Atlas
-
-## AI / Machine Learning
+## Technical Skills
 
 - Python
-- Pandas
-- NumPy
-- Scikit-Learn
-
-## Data Visualization
-
-- Chart.js
-
-## Version Control
-
+- Flask
+- HTML5
+- CSS3
+- SQLite
+- SQLAlchemy
 - Git
 - GitHub
-  # 👨‍💻 Team Members
+- Render
+- UI/UX Design
 
-## Arnav Tripathi
-**Role:** Team Leader • Backend Development • Database Management • Deployment • Project Coordination
+## Prototype / Demo Link
 
-## Arya Singh
-**Role:** Full Stack Developer • AI/ML Integration • UI/UX Design • Documentation • Presentation
+https://syanpx-campusos.onrender.com
 
-## Anurag
-**Role:** Frontend Development • UI Components • Testing • Integration
+## Presentation (PPT) Link (Google Drive)
 
----
-
-# 🏆 Why Campus OS?
-
-✔ AI-Powered Decision Making
-
-✔ Smart Resource Optimization
-
-✔ Centralized University Platform
-
-✔ Predictive Analytics
-
-✔ Modern Full-Stack Architecture
-
-✔ Scalable Cloud Deployment
-
-✔ Real-Time Insights
-
-✔ User-Friendly Experience
-
----
-
-# 📄 License
-
-This project was developed for **Track 1 – Full Stack Engineering (PS 1)** as a hackathon submission.
-
----
-# presentation ppt link drive - 
 https://drive.google.com/file/d/1l8EgHwItAvQTl2XOE3Xkos7doRPMBw8s/view?usp=sharing
 
-# 🌟 Tagline
+## Video Demo Link (Google Drive)
 
-> **"One Platform. Infinite Possibilities."**
 
-### ⭐ GitHub Topics
-
-```
-react flask python mongodb machine-learning ai smart-campus education dashboard full-stack hackathon
-```
