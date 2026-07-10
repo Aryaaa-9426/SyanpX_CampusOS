@@ -261,6 +261,26 @@ def admin():
             db.session.commit()
 
             return "Notice Added Successfully"
+        elif form_type == "placement":
+
+          company = request.form["company"]
+          role = request.form["role"]
+          eligibility = request.form["eligibility"]
+          last_date = request.form["last_date"]
+          apply_link = request.form["apply_link"]
+
+        placement = Placement(
+           company=company,
+           role=role,
+           eligibility=eligibility,
+           last_date=last_date,
+           apply_link=apply_link
+        )
+
+        db.session.add(placement)
+        db.session.commit()
+
+    return "Placement Added Successfully"
 
     return render_template("admin.html")
 
