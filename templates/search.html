@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search - CampusOS</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Search Results</h1>
+
+    <form action="/search" method="GET">
+
+        <input type="text" name="query" placeholder="Search CampusOS..." required>
+
+        <button type="submit">Search</button>
+
+    </form>
+
+
+    <h2>📅 Events</h2>
+
+    {% for event in events %}
+
+    <div class="card">
+        <h3>{{ event.title }}</h3>
+        <p>{{ event.date }}</p>
+        <p>{{ event.description }}</p>
+    </div>
+
+    {% endfor %}
+
+
+
+    <h2>📢 Notices</h2>
+
+    {% for notice in notices %}
+
+    <div class="card">
+        <h3>{{ notice.title }}</h3>
+        <p>{{ notice.message }}</p>
+    </div>
+
+    {% endfor %}
+
+
+
+    <h2>📚 Study Materials</h2>
+
+    {% for material in materials %}
+
+    <div class="card">
+        <h3>{{ material.title }}</h3>
+        <p>{{ material.subject }}</p>
+        <a href="{{ material.link }}">Open</a>
+    </div>
+
+    {% endfor %}
+
+
+
+    <h2>💼 Placements</h2>
+
+    {% for placement in placements %}
+
+    <div class="card">
+        <h3>{{ placement.company }}</h3>
+        <p>{{ placement.role }}</p>
+        <p>{{ placement.eligibility }}</p>
+    </div>
+
+    {% endfor %}
+
+
+</div>
+
+</body>
+</html>

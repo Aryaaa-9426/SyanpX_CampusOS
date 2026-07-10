@@ -433,6 +433,36 @@ def calendar():
 
     return render_template("calendar.html", calendars=calendars)
 
+@app.route("/search")
+def search():
+
+    query = request.args.get("query")
+
+    events = Event.query.filter(
+        Event.title.contains(query)
+    ).all()
+
+    notices = Notice.query.filter(
+        Notice.title.contains(query)
+    ).all()
+
+    materials = StudyMaterial.query.filter(
+        StudyMaterial.title.contains(query)
+    ).all()
+
+    placements = Placement.query.filter(
+        Placement.company.contains(query)
+    ).all()
+
+    return render_template(
+        "search.html",
+        query=query,
+        events=events,
+        notices=notices,
+        materials=materials,
+        placements=placements
+    )
+
 
 # -----------------------------
 # Run App
