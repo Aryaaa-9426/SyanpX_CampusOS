@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Feedback - CampusOS</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Student Feedback</h1>
+
+    {% for feedback in feedbacks %}
+
+    <div class="card">
+        <h3>{{ feedback.name }}</h3>
+        <p>{{ feedback.message }}</p>
+    </div>
+
+    {% endfor %}
+
+</div>
+
+</body>
+</html>

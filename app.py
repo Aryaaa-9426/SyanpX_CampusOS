@@ -226,6 +226,28 @@ def feedback():
 
     return render_template("feedback.html", feedbacks=all_feedback)
 
+@app.route("/submit_feedback", methods=["POST"])
+def submit_feedback():
+
+    name = request.form["name"]
+    message = request.form["message"]
+
+    feedback = Feedback(
+        name=name,
+        message=message
+    )
+
+    db.session.add(feedback)
+    db.session.commit()
+
+    return "Feedback Submitted Successfully!"
+
+@app.route("/admin_feedback")
+def admin_feedback():
+
+    feedbacks = Feedback.query.all()
+
+    return render_template("admin_feedback.html", feedbacks=feedbacks)
 
 if __name__ == "__main__":
 
