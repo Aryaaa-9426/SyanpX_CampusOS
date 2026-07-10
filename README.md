@@ -155,6 +155,8 @@ Using Artificial Intelligence, the platform predicts scheduling conflicts, recom
 This project was developed for **Track 1 – Full Stack Engineering (PS 1)** as a hackathon submission.
 
 ---
+# presentation ppt link drive - 
+https://drive.google.com/file/d/1l8EgHwItAvQTl2XOE3Xkos7doRPMBw8s/view?usp=sharing
 
 # 🌟 Tagline
 
