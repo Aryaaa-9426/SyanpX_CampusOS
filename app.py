@@ -1,4 +1,3 @@
-
 from flask import Flask, render_template, request, redirect, session
 from flask_sqlalchemy import SQLAlchemy
 
@@ -11,7 +10,10 @@ app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///campus.db"
 db = SQLAlchemy(app)
 
 
-# Student table
+# -----------------------------
+# Database Models
+# -----------------------------
+
 class Student(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100))
@@ -31,27 +33,44 @@ class Notice(db.Model):
     title = db.Column(db.String(100))
     message = db.Column(db.String(200))
 
+
 class StudyMaterial(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     subject = db.Column(db.String(100))
     title = db.Column(db.String(100))
     link = db.Column(db.String(300))
 
+
 class Feedback(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100))
     message = db.Column(db.String(500))
 
+class AcademicCalendar(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(100))
+    date = db.Column(db.String(50))
+    description = db.Column(db.String(200))
+
+
+# -----------------------------
+# Home
+# -----------------------------
 
 @app.route("/")
 def home():
     return render_template("index.html")
 
 
+# -----------------------------
+# Student Registration
+# -----------------------------
+
 @app.route("/register", methods=["GET", "POST"])
 def register():
 
     if request.method == "POST":
+
         name = request.form["name"]
         email = request.form["email"]
         password = request.form["password"]
@@ -70,10 +89,15 @@ def register():
     return render_template("register.html")
 
 
+# -----------------------------
+# Student Login
+# -----------------------------
+
 @app.route("/login", methods=["GET", "POST"])
 def login():
 
     if request.method == "POST":
+
         email = request.form["email"]
         password = request.form["password"]
 
@@ -86,11 +110,14 @@ def login():
             session["student_id"] = student.id
             return redirect("/dashboard")
 
-        else:
-            return "Invalid Login"
+        return "Invalid Login"
 
     return render_template("login.html")
 
+
+# -----------------------------
+# Dashboard
+# -----------------------------
 
 @app.route("/dashboard")
 def dashboard():
@@ -105,12 +132,21 @@ def profile():
     return render_template("profile.html", student=student)
 
 
+# -----------------------------
+# Events
+# -----------------------------
+
 @app.route("/events")
 def events():
 
     all_events = Event.query.all()
 
     return render_template("events.html", events=all_events)
+
+
+# -----------------------------
+# Notices
+# -----------------------------
 
 @app.route("/notices")
 def notices():
@@ -119,40 +155,59 @@ def notices():
 
     return render_template("notices.html", notices=all_notices)
 
+
+# -----------------------------
+# Study Materials
+# -----------------------------
+
+@app.route("/study_materials")
+def study_materials():
+
+    materials = StudyMaterial.query.all()
+
+    return render_template("study_materials.html", materials=materials)
+
+
+# -----------------------------
+# Logout
+# -----------------------------
+
 @app.route("/logout")
 def logout():
     session.clear()
     return redirect("/login")
 
-@app.route("/add_event")
-def add_event():
 
-    event = Event(
-        title="Hackathon 2026",
-        date="15 July 2026",
-        description="Build innovative projects and compete."
-    )
+# -----------------------------
+# Admin Login
+# -----------------------------
 
-    db.session.add(event)
-    db.session.commit()
+@app.route("/admin_login", methods=["GET", "POST"])
+def admin_login():
 
-    return "Event Added"
+    if request.method == "POST":
 
-@app.route("/add_notice")
-def add_notice():
+        username = request.form["username"]
+        password = request.form["password"]
 
-    notice = Notice(
-        title="Exam Notice",
-        message="Semester examination schedule has been released."
-    )
+        if username == "admin" and password == "admin123":
 
-    db.session.add(notice)
-    db.session.commit()
+            session["admin"] = True
+            return redirect("/admin")
 
-    return "Notice Added"
+        else:
+            return "Invalid Admin Login"
+
+    return render_template("admin_login.html")
+# -----------------------------
+# Admin Panel
+# -----------------------------
 
 @app.route("/admin", methods=["GET", "POST"])
 def admin():
+
+    if "admin" not in session:
+        return redirect("/admin_login")
 
     if request.method == "POST":
 
@@ -175,7 +230,6 @@ def admin():
 
             return "Event Added Successfully"
 
-
         elif form_type == "notice":
 
             title = request.form["title"]
@@ -191,11 +245,18 @@ def admin():
 
             return "Notice Added Successfully"
 
+    return render_template("admin.html")
 
-    return render_template("admin.html")
-    return render_template("admin.html")
+
+# -----------------------------
+# Add Study Material
+# -----------------------------
+
 @app.route("/add_material", methods=["POST"])
 def add_material():
+
+    if "admin" not in session:
+        return redirect("/admin_login")
 
     subject = request.form["subject"]
     title = request.form["title"]
@@ -211,20 +272,67 @@ def add_material():
     db.session.commit()
 
     return "Study Material Added Successfully"
+@app.route("/add_calendar", methods=["POST"])
+def add_calendar():
 
-@app.route("/study_materials")
-def study_materials():
+    if "admin" not in session:
+        return redirect("/admin_login")
 
-    materials = StudyMaterial.query.all()
+    title = request.form["title"]
+    date = request.form["date"]
+    description = request.form["description"]
 
-    return render_template("study_materials.html", materials=materials)
+    calendar = AcademicCalendar(
+        title=title,
+        date=date,
+        description=description
+    )
+
+    db.session.add(calendar)
+    db.session.commit()
+
+    return "Calendar Event Added Successfully"
+
+
+# -----------------------------
+# Demo Routes
+# -----------------------------
+
+@app.route("/add_event")
+def add_event():
+
+    event = Event(
+        title="Hackathon 2026",
+        date="15 July 2026",
+        description="Build innovative projects and compete."
+    )
+
+    db.session.add(event)
+    db.session.commit()
+
+    return "Event Added"
+
+
+@app.route("/add_notice")
+def add_notice():
+
+    notice = Notice(
+        title="Exam Notice",
+        message="Semester examination schedule has been released."
+    )
+
+    db.session.add(notice)
+    db.session.commit()
+
+    return "Notice Added"
+# -----------------------------
+# Feedback
+# -----------------------------
 
 @app.route("/feedback")
 def feedback():
+    return render_template("feedback.html")
 
-    all_feedback = Feedback.query.all()
-
-    return render_template("feedback.html", feedbacks=all_feedback)
 
 @app.route("/submit_feedback", methods=["POST"])
 def submit_feedback():
@@ -242,12 +350,32 @@ def submit_feedback():
 
     return "Feedback Submitted Successfully!"
 
+
+# -----------------------------
+# Admin Feedback
+# -----------------------------
+
 @app.route("/admin_feedback")
 def admin_feedback():
+
+    if "admin" not in session:
+        return redirect("/admin_login")
 
     feedbacks = Feedback.query.all()
 
     return render_template("admin_feedback.html", feedbacks=feedbacks)
+
+@app.route("/calendar")
+def calendar():
+
+    calendars = AcademicCalendar.query.all()
+
+    return render_template("calendar.html", calendars=calendars)
+
+
+# -----------------------------
+# Run App
+# -----------------------------
 
 if __name__ == "__main__":
 
@@ -255,3 +383,4 @@ if __name__ == "__main__":
         db.create_all()
 
     app.run(debug=True)
+
