@@ -228,59 +228,34 @@ def admin():
 
     if request.method == "POST":
 
-        form_type = request.form["type"]
+        form_type = request.form.get("type")
 
         if form_type == "event":
 
-            title = request.form["title"]
-            date = request.form["date"]
-            description = request.form["description"]
-
             event = Event(
-                title=title,
-                date=date,
-                description=description
+                title=request.form["title"],
+                date=request.form["date"],
+                description=request.form["description"]
             )
 
             db.session.add(event)
             db.session.commit()
 
-            return "Event Added Successfully"
+            return redirect("/admin")
+
 
         elif form_type == "notice":
 
-            title = request.form["title"]
-            message = request.form["message"]
-
             notice = Notice(
-                title=title,
-                message=message
+                title=request.form["title"],
+                message=request.form["message"]
             )
 
             db.session.add(notice)
             db.session.commit()
 
-            return "Notice Added Successfully"
-        elif form_type == "placement":
+            return redirect("/admin")
 
-          company = request.form["company"]
-          role = request.form["role"]
-          eligibility = request.form["eligibility"]
-          last_date = request.form["last_date"]
-          apply_link = request.form["apply_link"]
-
-        placement = Placement(
-           company=company,
-           role=role,
-           eligibility=eligibility,
-           last_date=last_date,
-           apply_link=apply_link
-        )
-
-        db.session.add(placement)
-        db.session.commit()
-
-    return "Placement Added Successfully"
 
     return render_template("admin.html")
 
@@ -475,23 +450,67 @@ def ai_assistant():
 
         question = request.form["question"].lower()
 
+
         if "event" in question:
-            answer = "You can check upcoming events in the Events section."
+
+            events = Event.query.all()
+
+            if events:
+                answer = "Upcoming Events:\n"
+
+                for event in events:
+                    answer += f"{event.title} on {event.date}\n"
+
+            else:
+                answer = "No events available."
+
 
         elif "notice" in question:
-            answer = "Latest campus notices are available in the Notices section."
 
-        elif "study" in question or "material" in question:
-            answer = "Study materials are available in the Study Materials section."
+            notices = Notice.query.all()
 
-        elif "placement" in question or "job" in question:
-            answer = "Placement opportunities are available in the Placement section."
+            if notices:
+                answer = "Latest Notices:\n"
 
-        elif "calendar" in question or "exam" in question:
-            answer = "Academic dates and exam schedules are available in the Academic Calendar."
+                for notice in notices:
+                    answer += f"{notice.title}\n"
+
+            else:
+                answer = "No notices available."
+
+
+        elif "placement" in question:
+
+            placements = Placement.query.all()
+
+            if placements:
+                answer = "Available Placements:\n"
+
+                for p in placements:
+                    answer += f"{p.company} - {p.role}\n"
+
+            else:
+                answer = "No placement opportunities available."
+
+
+        elif "material" in question or "study" in question:
+
+            materials = StudyMaterial.query.all()
+
+            if materials:
+                answer = "Study Materials:\n"
+
+                for m in materials:
+                    answer += f"{m.subject}: {m.title}\n"
+
+            else:
+                answer = "No study materials available."
+
 
         else:
-            answer = "I can help you with Events, Notices, Study Materials, Placements and Academic Calendar."
+
+            answer = "Ask me about Events, Notices, Placements or Study Materials."
+
 
     return render_template(
         "ai_assistant.html",
