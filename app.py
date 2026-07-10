@@ -52,6 +52,14 @@ class AcademicCalendar(db.Model):
     date = db.Column(db.String(50))
     description = db.Column(db.String(200))
 
+class Placement(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    company = db.Column(db.String(100))
+    role = db.Column(db.String(100))
+    eligibility = db.Column(db.String(100))
+    last_date = db.Column(db.String(50))
+    apply_link = db.Column(db.String(300))
+
 
 # -----------------------------
 # Home
@@ -166,6 +174,15 @@ def study_materials():
     materials = StudyMaterial.query.all()
 
     return render_template("study_materials.html", materials=materials)
+
+@app.route("/placements")
+def placements():
+
+    placements = Placement.query.all()
+
+    return render_template("placements.html", placements=placements)
+
+
 
 
 # -----------------------------
@@ -293,6 +310,30 @@ def add_calendar():
 
     return "Calendar Event Added Successfully"
 
+@app.route("/add_placement", methods=["POST"])
+def add_placement():
+
+    if "admin" not in session:
+        return redirect("/admin_login")
+
+    company = request.form["company"]
+    role = request.form["role"]
+    eligibility = request.form["eligibility"]
+    last_date = request.form["last_date"]
+    apply_link = request.form["apply_link"]
+
+    placement = Placement(
+        company=company,
+        role=role,
+        eligibility=eligibility,
+        last_date=last_date,
+        apply_link=apply_link
+    )
+
+    db.session.add(placement)
+    db.session.commit()
+
+    return "Placement Added Successfully"
 
 # -----------------------------
 # Demo Routes
