@@ -31,6 +31,17 @@ class Notice(db.Model):
     title = db.Column(db.String(100))
     message = db.Column(db.String(200))
 
+class StudyMaterial(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    subject = db.Column(db.String(100))
+    title = db.Column(db.String(100))
+    link = db.Column(db.String(300))
+
+class Feedback(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100))
+    message = db.Column(db.String(500))
+
 
 @app.route("/")
 def home():
@@ -183,6 +194,37 @@ def admin():
 
     return render_template("admin.html")
     return render_template("admin.html")
+@app.route("/add_material", methods=["POST"])
+def add_material():
+
+    subject = request.form["subject"]
+    title = request.form["title"]
+    link = request.form["link"]
+
+    material = StudyMaterial(
+        subject=subject,
+        title=title,
+        link=link
+    )
+
+    db.session.add(material)
+    db.session.commit()
+
+    return "Study Material Added Successfully"
+
+@app.route("/study_materials")
+def study_materials():
+
+    materials = StudyMaterial.query.all()
+
+    return render_template("study_materials.html", materials=materials)
+
+@app.route("/feedback")
+def feedback():
+
+    all_feedback = Feedback.query.all()
+
+    return render_template("feedback.html", feedbacks=all_feedback)
 
 
 if __name__ == "__main__":

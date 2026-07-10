@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Study Materials - CampusOS</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="container">
+
+    <h1>Study Materials</h1>
+
+    {% for material in materials %}
+
+    <div class="card">
+
+        <h3>{{ material.subject }}</h3>
+
+        <p>{{ material.title }}</p>
+
+        <a href="{{ material.link }}" target="_blank">Open Material</a>
+
+    </div>
+
+    {% endfor %}
+
+</div>
+
+</body>
+</html>
