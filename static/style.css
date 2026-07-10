@@ -118,3 +118,14 @@ a {
 .navbar a:hover {
     text-decoration: underline;
 }
+.admin-section {
+    background: white;
+    padding: 25px;
+    margin: 25px 0;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+.admin-section h3 {
+    color: #1e3a8a;
+}
