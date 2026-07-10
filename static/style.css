@@ -470,5 +470,11 @@ color:#1e3a8a;
 .profile-info strong{
 
     color:#1e3a8a;
+ 
+}
 
+/* Study Materials */
+
+.card a button{
+    width:100%;
 }
