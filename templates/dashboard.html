@@ -1,134 +1,363 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>CampusOS Dashboard</title>
-    <link rel="stylesheet" href="/static/style.css">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
 </head>
+
 
 <body>
 
-<div class="container">
-    <nav class="navbar">
 
-    <h2>CampusOS 🎓</h2>
+<div class="container">
+
+
+<!-- Navbar -->
+
+<nav class="navbar">
+
+    <h2>🎓 CampusOS</h2>
 
     <div>
+
         <a href="/dashboard">Home</a>
         <a href="/profile">Profile</a>
         <a href="/events">Events</a>
         <a href="/notices">Notices</a>
         <a href="/ai_assistant">AI Assistant</a>
         <a href="/logout">Logout</a>
+
     </div>
 
 </nav>
 
-    <h1>CampusOS Dashboard</h1>
-    <p>Welcome to your Smart Campus Management System 🎓</p>
-    <form action="/search" method="GET">
 
-    <input type="text" name="query" placeholder="Search CampusOS...">
 
-    <button type="submit">Search</button>
+<!-- Welcome Banner -->
 
-</form>
+<div class="dashboard-header">
 
-    <div class="card-container">
+    <h1>Welcome to CampusOS 👋</h1>
 
-        <!-- Profile -->
-        <div class="card">
-            <h3>👤 Profile</h3>
-            <p>View your student details</p>
-
-            <a href="/profile">
-                <button>Open</button>
-            </a>
-        </div>
-
-        <!-- Events -->
-        <div class="card">
-            <h3>📅 Events</h3>
-            <p>Explore upcoming campus events</p>
-
-            <a href="/events">
-                <button>Open</button>
-            </a>
-        </div>
-
-        <!-- Notices -->
-        <div class="card">
-            <h3>📢 Notices</h3>
-            <p>Check latest campus announcements</p>
-
-            <a href="/notices">
-                <button>Open</button>
-            </a>
-        </div>
-
-        <!-- Study Materials -->
-        <div class="card">
-            <h3>📚 Study Materials</h3>
-            <p>Access notes and learning resources</p>
-
-            <a href="/study_materials">
-                <button>Open</button>
-            </a>
-        </div>
-
-        <!-- Academic Calendar -->
-        <div class="card">
-            <h3>🗓️ Academic Calendar</h3>
-            <p>View important academic dates</p>
-
-            <a href="/calendar">
-                <button>Open</button>
-            </a>
-        </div>
-
-        <!-- Placements -->
-        <div class="card">
-            <h3>💼 Placements</h3>
-            <p>Check latest placement opportunities</p>
-
-            <a href="/placements">
-                <button>Open</button>
-            </a>
-        </div>
-
-        <!-- Feedback -->
-        <div class="card">
-            <h3>💬 Feedback</h3>
-            <p>Share your feedback with the college</p>
-
-            <a href="/feedback">
-                <button>Open</button>
-            </a>
-        </div>
-
-        <!-- AI Assistant -->
-
-     <div class="card">
-
-         <h3>🤖 AI Assistant</h3>
-
-         <p>Get smart answers about CampusOS</p>
-
-         <a href="/ai_assistant">
-           <button>Open</button>
-         </a>
-
-     </div>
-
-    </div>
-
-    <br><br>
-
-    <a href="/logout">
-        <button>Logout</button>
-    </a>
+    <p>
+        Your smart campus companion for academics,
+        events, placements and AI assistance.
+    </p>
 
 </div>
 
+
+
+
+<!-- Search -->
+
+<form action="/search" method="GET">
+
+    <input 
+    type="text" 
+    name="query" 
+    placeholder="🔍 Search CampusOS..."
+    >
+
+    <button type="submit">
+        Search
+    </button>
+
+</form>
+
+
+
+
+<!-- Quick Statistics -->
+
+<h2 class="section-title">
+    Campus Overview
+</h2>
+
+
+<div class="stats-container">
+
+
+<div class="stat-card">
+
+<h2>📅</h2>
+
+<h3>Events</h3>
+
+<p>Upcoming Activities</p>
+
+</div>
+
+
+
+<div class="stat-card">
+
+<h2>📢</h2>
+
+<h3>Notices</h3>
+
+<p>Latest Announcements</p>
+
+</div>
+
+
+
+<div class="stat-card">
+
+<h2>📚</h2>
+
+<h3>Resources</h3>
+
+<p>Study Materials</p>
+
+</div>
+
+
+
+<div class="stat-card">
+
+<h2>💼</h2>
+
+<h3>Placements</h3>
+
+<p>Career Opportunities</p>
+
+</div>
+
+
+</div>
+
+
+
+
+
+<!-- Main Features -->
+
+<h2 class="section-title">
+    Student Services
+</h2>
+
+
+
+<div class="card-container">
+
+
+
+<div class="card">
+
+<h3>👤 Profile</h3>
+
+<p>
+View and manage your student details.
+</p>
+
+<a href="/profile">
+
+<button>
+Open
+</button>
+
+</a>
+
+</div>
+
+
+
+
+
+<div class="card">
+
+<h3>📅 Events</h3>
+
+<p>
+Explore upcoming campus events.
+</p>
+
+<a href="/events">
+
+<button>
+Open
+</button>
+
+</a>
+
+</div>
+
+
+
+
+
+<div class="card">
+
+<h3>📢 Notices</h3>
+
+<p>
+Check latest campus announcements.
+</p>
+
+<a href="/notices">
+
+<button>
+Open
+</button>
+
+</a>
+
+</div>
+
+
+
+
+
+<div class="card">
+
+<h3>📚 Study Materials</h3>
+
+<p>
+Access notes and learning resources.
+</p>
+
+<a href="/study_materials">
+
+<button>
+Open
+</button>
+
+</a>
+
+</div>
+
+
+
+
+
+<div class="card">
+
+<h3>🗓️ Academic Calendar</h3>
+
+<p>
+View important academic dates.
+</p>
+
+<a href="/calendar">
+
+<button>
+Open
+</button>
+
+</a>
+
+</div>
+
+
+
+
+
+<div class="card">
+
+<h3>💼 Placements</h3>
+
+<p>
+Find placement opportunities.
+</p>
+
+<a href="/placements">
+
+<button>
+Open
+</button>
+
+</a>
+
+</div>
+
+
+
+
+
+<div class="card">
+
+<h3>💬 Feedback</h3>
+
+<p>
+Share your suggestions.
+</p>
+
+<a href="/feedback">
+
+<button>
+Open
+</button>
+
+</a>
+
+</div>
+
+
+
+
+
+<div class="card ai-card">
+
+<h3>🤖 AI Assistant</h3>
+
+<p>
+Get smart campus answers instantly.
+</p>
+
+<a href="/ai_assistant">
+
+<button>
+Ask AI
+</button>
+
+</a>
+
+</div>
+
+
+
+
+</div>
+
+
+
+
+
+<!-- Recent Updates -->
+
+<div class="updates">
+
+
+<h2>
+🚀 Latest Campus Updates
+</h2>
+
+
+<p>
+• New events and notices will appear here.
+</p>
+
+<p>
+• Placement opportunities are updated regularly.
+</p>
+
+<p>
+• AI Assistant is available for quick support.
+</p>
+
+
+</div>
+
+
+
+
+</div>
+
+
 </body>
+
 </html>
-```
