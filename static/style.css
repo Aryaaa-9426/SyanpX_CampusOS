@@ -422,3 +422,53 @@ color:#1e3a8a;
 .card h3 {
     color: #1e3a8a;
 }
+
+/* ===========================
+   Profile Page
+=========================== */
+
+.profile-card{
+
+    max-width:500px;
+    margin:40px auto;
+    background:white;
+    padding:35px;
+    border-radius:20px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.1);
+
+}
+
+.profile-avatar{
+
+    width:100px;
+    height:100px;
+    margin:auto;
+    border-radius:50%;
+    background:#2563eb;
+    color:white;
+    font-size:50px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+}
+
+.profile-role{
+
+    color:#666;
+    margin-bottom:20px;
+
+}
+
+.profile-info{
+
+    text-align:left;
+    line-height:2;
+
+}
+
+.profile-info strong{
+
+    color:#1e3a8a;
+
+}

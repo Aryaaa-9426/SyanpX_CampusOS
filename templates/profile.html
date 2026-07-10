@@ -1,25 +1,84 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <title>Student Profile - CampusOS</title>
-    <link rel="stylesheet" href="/static/style.css">
+
+    <title>My Profile - CampusOS</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
 </head>
 
 <body>
 
 <div class="container">
 
-    <h1>Student Profile</h1>
+    <!-- Navbar -->
 
-    <h3>Name: {{ student.name }}</h3>
+    <nav class="navbar">
 
-    <p>Email: {{ student.email }}</p>
+        <h2>🎓 CampusOS</h2>
 
-    <p>Student ID: {{ student.id }}</p>
+        <div>
 
-    <p>Welcome to CampusOS 🎓</p>
+            <a href="/dashboard">Dashboard</a>
+            <a href="/profile">Profile</a>
+            <a href="/logout">Logout</a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- Header -->
+
+    <div class="dashboard-header">
+
+        <h1>👤 Student Profile</h1>
+
+        <p>View your personal information and account details.</p>
+
+    </div>
+
+
+    <!-- Profile Card -->
+
+    <div class="profile-card">
+
+        <div class="profile-avatar">
+            👨‍🎓
+        </div>
+
+        <h2>{{ student.name }}</h2>
+
+        <p class="profile-role">CampusOS Student</p>
+
+        <hr>
+
+        <div class="profile-info">
+
+            <p><strong>📧 Email:</strong> {{ student.email }}</p>
+
+            <p><strong>🆔 Student ID:</strong> {{ student.id }}</p>
+
+            <p><strong>🎓 Status:</strong> Active</p>
+
+            <p><strong>🏫 Portal:</strong> CampusOS</p>
+
+        </div>
+
+        <br>
+
+        <a href="/dashboard">
+
+            <button>⬅ Back to Dashboard</button>
+
+        </a>
+
+    </div>
 
 </div>
 
 </body>
+
 </html>
