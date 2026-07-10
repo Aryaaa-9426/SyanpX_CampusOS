@@ -1,7 +1,10 @@
-from flask import Flask, render_template, request, redirect
+
+from flask import Flask, render_template, request, redirect, session
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
+
+app.secret_key = "campusos_secret_key"
 
 # Database setup
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///campus.db"
@@ -14,6 +17,19 @@ class Student(db.Model):
     name = db.Column(db.String(100))
     email = db.Column(db.String(100), unique=True)
     password = db.Column(db.String(100))
+
+
+class Event(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(100))
+    date = db.Column(db.String(50))
+    description = db.Column(db.String(200))
+
+
+class Notice(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(100))
+    message = db.Column(db.String(200))
 
 
 @app.route("/")
@@ -56,6 +72,7 @@ def login():
         ).first()
 
         if student:
+            session["student_id"] = student.id
             return redirect("/dashboard")
 
         else:
@@ -71,20 +88,61 @@ def dashboard():
 
 @app.route("/profile")
 def profile():
-    return render_template("profile.html")
+
+    student = Student.query.get(session["student_id"])
+
+    return render_template("profile.html", student=student)
 
 
 @app.route("/events")
 def events():
-    return render_template("events.html")
 
+    all_events = Event.query.all()
+
+    return render_template("events.html", events=all_events)
 
 @app.route("/notices")
 def notices():
-    return render_template("notices.html")
+
+    all_notices = Notice.query.all()
+
+    return render_template("notices.html", notices=all_notices)
+
+@app.route("/logout")
+def logout():
+    session.clear()
+    return redirect("/login")
+
+@app.route("/add_event")
+def add_event():
+
+    event = Event(
+        title="Hackathon 2026",
+        date="15 July 2026",
+        description="Build innovative projects and compete."
+    )
+
+    db.session.add(event)
+    db.session.commit()
+
+    return "Event Added"
+
+@app.route("/add_notice")
+def add_notice():
+
+    notice = Notice(
+        title="Exam Notice",
+        message="Semester examination schedule has been released."
+    )
+
+    db.session.add(notice)
+    db.session.commit()
+
+    return "Notice Added"
 
 
 if __name__ == "__main__":
+
     with app.app_context():
         db.create_all()
 

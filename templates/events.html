@@ -9,19 +9,21 @@
 
 <div class="container">
 
-    <h1>Campus Events</h1>
+<h1>Campus Events</h1>
 
-    <div>
-        <h3>Hackathon Event</h3>
-        <p>Date: 15 July 2026</p>
-        <p>Join and showcase your innovative ideas.</p>
-    </div>
+{% for event in events %}
 
-    <div>
-        <h3>Technical Fest</h3>
-        <p>Date: 20 August 2026</p>
-        <p>Annual technical event of CampusOS.</p>
-    </div>
+<div class="card">
+
+    <h3>{{ event.title }}</h3>
+
+    <p>Date: {{ event.date }}</p>
+
+    <p>{{ event.description }}</p>
+
+</div>
+
+{% endfor %}
 
 </div>
 

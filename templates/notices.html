@@ -9,17 +9,19 @@
 
 <div class="container">
 
-    <h1>Campus Notices</h1>
+<h1>Campus Notices</h1>
 
-    <div>
-        <h3>Exam Notice</h3>
-        <p>Semester examination schedule has been announced.</p>
-    </div>
+{% for notice in notices %}
 
-    <div>
-        <h3>Campus Update</h3>
-        <p>Check the latest campus announcements here.</p>
-    </div>
+<div class="card">
+
+    <h3>{{ notice.title }}</h3>
+
+    <p>{{ notice.message }}</p>
+
+</div>
+
+{% endfor %}
 
 </div>
 
