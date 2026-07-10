@@ -1,44 +1,130 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <title>CampusOS AI Assistant</title>
-    <link rel="stylesheet" href="/static/style.css">
+
+<title>CampusOS AI Assistant</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
 </head>
+
 
 <body>
 
+
 <div class="container">
 
-    <h1>🤖 CampusOS AI Assistant</h1>
 
-    <p>Ask anything about CampusOS</p>
+<nav class="navbar">
 
-    <form method="POST">
+<h2>🎓 CampusOS</h2>
 
-        <input type="text" 
-               name="question" 
-               placeholder="Ask your question..."
-               required>
+<div>
 
-        <button type="submit">Ask AI</button>
+<a href="/dashboard">Dashboard</a>
+<a href="/logout">Logout</a>
 
-    </form>
+</div>
+
+</nav>
 
 
-    {% if answer %}
 
-    <div class="card">
 
-        <h3>AI Response</h3>
+<div class="ai-header">
 
-        <p>{{ answer }}</p>
+<h1>🤖 CampusOS AI Assistant</h1>
 
-    </div>
+<p>
+Your smart campus companion for quick information access.
+</p>
 
-    {% endif %}
+</div>
+
+
+
+
+
+<div class="chat-box">
+
+
+<div class="ai-message">
+
+<h3>🤖 AI Assistant</h3>
+
+<p>
+Hello! 👋  
+I can help you with Events, Notices, Placements and Study Materials.
+</p>
+
+</div>
+
+
+
+
+{% if answer %}
+
+
+<div class="user-message">
+
+<h3>🧑 Your Query</h3>
+
+<p>
+{{ request.form['question'] }}
+</p>
+
+</div>
+
+
+
+
+<div class="ai-message">
+
+<h3>🤖 AI Response</h3>
+
+<p style="white-space: pre-line;">
+{{ answer }}
+</p>
+
+</div>
+
+
+{% endif %}
+
 
 
 </div>
 
+
+
+
+
+<form method="POST" class="ai-form">
+
+
+<input 
+type="text"
+name="question"
+placeholder="Ask about events, notices, placements..."
+required
+>
+
+
+<button type="submit">
+Ask AI 🚀
+</button>
+
+
+</form>
+
+
+
+
+
+</div>
+
+
 </body>
+
 </html>
