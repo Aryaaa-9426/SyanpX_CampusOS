@@ -140,6 +140,50 @@ def add_notice():
 
     return "Notice Added"
 
+@app.route("/admin", methods=["GET", "POST"])
+def admin():
+
+    if request.method == "POST":
+
+        form_type = request.form["type"]
+
+        if form_type == "event":
+
+            title = request.form["title"]
+            date = request.form["date"]
+            description = request.form["description"]
+
+            event = Event(
+                title=title,
+                date=date,
+                description=description
+            )
+
+            db.session.add(event)
+            db.session.commit()
+
+            return "Event Added Successfully"
+
+
+        elif form_type == "notice":
+
+            title = request.form["title"]
+            message = request.form["message"]
+
+            notice = Notice(
+                title=title,
+                message=message
+            )
+
+            db.session.add(notice)
+            db.session.commit()
+
+            return "Notice Added Successfully"
+
+
+    return render_template("admin.html")
+    return render_template("admin.html")
+
 
 if __name__ == "__main__":
 
