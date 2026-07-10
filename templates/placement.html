@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Placements - CampusOS</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Placement Opportunities</h1>
+
+    {% for placement in placements %}
+
+    <div class="card">
+
+        <h3>{{ placement.company }}</h3>
+
+        <p><b>Role:</b> {{ placement.role }}</p>
+
+        <p><b>Eligibility:</b> {{ placement.eligibility }}</p>
+
+        <p><b>Last Date:</b> {{ placement.last_date }}</p>
+
+        <a href="{{ placement.apply_link }}" target="_blank">
+            <button>Apply Now</button>
+        </a>
+
+    </div>
+
+    {% endfor %}
+
+</div>
+
+</body>
+</html>
