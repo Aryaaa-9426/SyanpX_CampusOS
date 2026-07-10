@@ -27,8 +27,8 @@ CampusOS is a Smart Campus Management System that simplifies campus operations t
 ## Team Members
 
 - Arnav Tripathi (Team Leader)
-- Arya Singh
-- Anurag
+- Anurag pal
+- Arya singh
 
 ## Member Roles & Responsibilities
 
