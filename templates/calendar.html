@@ -1,31 +1,90 @@
 <!DOCTYPE html>
 <html>
+
 <head>
+
     <title>Academic Calendar - CampusOS</title>
-    <link rel="stylesheet" href="/static/style.css">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
 </head>
 
 <body>
 
 <div class="container">
 
-    <h1>Academic Calendar</h1>
+    <!-- Navbar -->
 
-    {% for calendar in calendars %}
+    <nav class="navbar">
 
-    <div class="card">
+        <h2>🎓 CampusOS</h2>
 
-        <h3>{{ calendar.title }}</h3>
+        <div>
 
-        <p><b>Date:</b> {{ calendar.date }}</p>
+            <a href="/dashboard">Dashboard</a>
+            <a href="/calendar">Academic Calendar</a>
+            <a href="/logout">Logout</a>
 
-        <p>{{ calendar.description }}</p>
+        </div>
+
+    </nav>
+
+    <!-- Header -->
+
+    <div class="dashboard-header">
+
+        <h1>🗓️ Academic Calendar</h1>
+
+        <p>
+            Stay updated with important academic schedules, examinations and campus activities.
+        </p>
 
     </div>
 
-    {% endfor %}
+    <!-- Calendar Cards -->
+
+    <div class="card-container">
+
+        {% if calendars %}
+
+            {% for calendar in calendars %}
+
+            <div class="card">
+
+                <h2>📅 {{ calendar.title }}</h2>
+
+                <hr>
+
+                <p><strong>📆 Date:</strong> {{ calendar.date }}</p>
+
+                <p><strong>📝 Details:</strong></p>
+
+                <p>{{ calendar.description }}</p>
+
+            </div>
+
+            {% endfor %}
+
+        {% else %}
+
+            <div class="card">
+
+                <h1>🗓️</h1>
+
+                <h2>No Academic Events</h2>
+
+                <p>
+                    Upcoming academic schedules and important dates will appear here.
+                </p>
+
+            </div>
+
+        {% endif %}
+
+    </div>
 
 </div>
 
 </body>
+
 </html>

@@ -501,4 +501,21 @@ color:#1e3a8a;
 
     width:100%;
 
+} 
+/* ===========================
+   Academic Calendar
+=========================== */
+
+.card hr{
+
+    border:none;
+    border-top:1px solid #e5e7eb;
+    margin:15px 0;
+
+}
+
+.card p{
+
+    line-height:1.6;
+
 }
