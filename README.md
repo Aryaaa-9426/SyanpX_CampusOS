@@ -69,5 +69,6 @@ https://syanpx-campusos.onrender.com
 https://drive.google.com/file/d/1l8EgHwItAvQTl2XOE3Xkos7doRPMBw8s/view?usp=sharing
 
 ## Video Demo Link (Google Drive)
+https://drive.google.com/file/d/1PDQWk5LSZm5QOrgZVJxfTx0HGk7oiwS2/view?usp=sharing
 
 
